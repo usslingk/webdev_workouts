@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 //components
 import Register from './components/Register';
 import Login from './components/Login';
+import Home from './components/Home';
 
 const Header = () => {
   return(
@@ -35,6 +36,7 @@ class App extends Component {
             <Route path="/" component={Header} />
             <Route path="/" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/home" component={Home} />
           </div>
         </Router>
       </Provider>
