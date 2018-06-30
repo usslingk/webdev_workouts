@@ -4,15 +4,15 @@ import '../App.css';
 //Router
 import { withRouter } from 'react-router-dom';
 
-class Register extends Component {
+class Login extends Component {
 
   render(){
     return(
       <div>
-        <h1>Register Formular</h1>
+        <h1>Login Formular</h1>
       </div>
     )
   }
 }
 
-export default withRouter(Register);
+export default withRouter(Login);
