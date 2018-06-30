@@ -2,37 +2,54 @@
 import React, { Component } from 'react';
 import '../App.css';
 import PropTypes from 'prop-types';
+//redux
+import { connect } from 'react-redux';
 //Router
 import { withRouter } from 'react-router-dom';
+//Component
+import { createUser } from '../actions/loginActions';
 
 class Register extends Component {
 
   constructor(props){
     super(props);
-    this.state={
-      female: '',
-      male: '',
+    this.state = {
+      gender: '',
       name: '',
       email: '',
       password: ''
     };
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }
 
+  onSubmit(e){
+    e.preventDefault();
+
+    const user = {
+      gender: this.state.gender,
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    this.props.createUser(user);
+  }
+
   render(){
     return(
       <div>
         <h1>Registrieren</h1>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <div>
             <label>weiblich</label>
-            <input type="radio" name="female" onChange={this.onChange} value={this.state.female} />
+            <input type="radio" name="gender" onChange={this.onChange} value={"female"} />
             <label>männlich</label>
-            <input type="radio" name="male" onChange={this.onChange} value={this.state.male} />
+            <input type="radio" name="gender" onChange={this.onChange} value={"male"} />
           </div>
           <div>
             <label>Name:</label><br />
@@ -53,4 +70,8 @@ class Register extends Component {
   }
 }
 
-export default withRouter(Register);
+Register.propTypes = {
+  createUser: PropTypes.func.isRequired
+};
+
+export default withRouter(connect(null, { createUser })(Register));
