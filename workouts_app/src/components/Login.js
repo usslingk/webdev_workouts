@@ -39,6 +39,9 @@ class Login extends Component {
             </div>
             <br />
             <Link to={`/home`}> Login </Link>
+            <br />
+            <br />
+            <Link to={`/register`}> Noch kein Mitglied? Jetzt registrieren! </Link>
           </form>
       </div>
     )
