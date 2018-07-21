@@ -12,6 +12,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
+import Workoutform from './components/Workoutform';
+import Users from './components/Users';
+import UpdateWorkout from './components/UpdateWorkout';
 
 const Header = () => {
   return(
@@ -37,6 +40,8 @@ class App extends Component {
             <Route path="/" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
+            <Route path="/home" component={Workoutform} />
+            <Route path="/workout/:workoutid" component={UpdateWorkout} />
           </div>
         </Router>
       </Provider>

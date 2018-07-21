@@ -2,9 +2,13 @@
 import React, { Component } from 'react';
 import '../App.css';
 import PropTypes from 'prop-types';
+//redux
+import { connect } from 'react-redux';
 //Router
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+//Component
+import { authenticateUserData } from '../actions/loginActions';
 
 class Login extends Component {
 
@@ -16,11 +20,16 @@ class Login extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e){
     this.setState({[e.target.name]: e.target.value});
+  }
+
+  onSubmit(e){
+    e.preventDefault();
+
   }
 
   render(){

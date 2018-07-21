@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Projekt WebDev</title>
+      <meta charset="utf-8"/>
+      <meta name=viewport content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+      <h2>Hi!</h2>
+      <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22D3SJ&redirect_uri=http%3A%2F%2Fomb.katharina-ussling.de%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800">
+        Hier klicken:
+      </a>
+      <br />
+      <button onclick="importData();">eintragen in die DB</button><br />
+      <button onclick="exportData();">ausgeben</button>
+
+      <div id="data"></div>
+
+
+
+      <script>
+          // get the url
+          var url = window.location.href;
+
+          //getting the access token from url
+          var access_token = url.split("#")[1].split("=")[1].split("&")[0];
+
+          // get the userid
+          var userId = url.split("#")[1].split("=")[2].split("&")[0];
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'https://api.fitbit.com/1/user/'+ userId +'/activities/heart/date/today/1w.json');
+          xhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
+          xhr.onload = function() {
+             if (xhr.status === 200) {
+                var fitnessDaten=xhr.responseText;
+                document.getElementById('data').innerHTML=fitnessDaten;
+
+                var nF = "activities-heart";
+                var xy = "bloed";
+                console.log("arry stelle 2: "+xy);
+              }
+          };
+          xhr.send()
+
+
+
+          function importData() {
+
+            var tokenQL = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzIwODg2NTcsImNsaWVudElkIjoiY2pqMWM1YThiMTNqNjAxMDdibjdhdjRzeiIsInByb2plY3RJZCI6ImNqajFjNWE4YTEzajUwMTA3cXV2N2NsMnYiLCJwZXJtYW5lbnRBdXRoVG9rZW5JZCI6ImNqanR5MTF0ZjVmZTkwMTM0Zzkxd2IzOHMifQ.VDAvMvRvHgUktVVsHbZRJHwyH1JwMI2ZEYfLZ5mBOjU"
+
+            var gql = new XMLHttpRequest();
+            gql.open('POST', 'https://api.graph.cool/simple/v1/cjj1c5a8a13j50107quv7cl2v/import', true);
+            console.log("geöffnet");
+            gql.setRequestHeader('Content-Type', 'application/json');
+            gql.setRequestHeader('Authorization', 'LuKa ' + tokenQL);
+            gql.setRequestHeader('valueType', 'nodes');
+            /*gql.setRequestHeader('values', '[{"_typeName": "Workouts", "caloriesOut": 1651.11412, "dateTime": "2018-07-14", "max": 98, "min": 30, "minutes": 989, "name": "Out of Range"},{"_typeName": "Workouts", "caloriesOut": 54.09318, "dateTime": "2018-07-15", "max": 137, "min": 98, "minutes": 9, "name": "Fat Burn"}];');
+            */
+            gql.send(JSON.stringify({"_typeName": "Workouts", "caloriesOut": 1651.11412, "dateTime": "2018-07-14", "max": 98, "min": 30, "minutes": 989, "name": "Out of Range"}));
+            console.log("gesendet");
+          }
+
+
+      </script>
+  </body>
+</html>
