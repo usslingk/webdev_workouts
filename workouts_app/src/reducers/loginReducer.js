@@ -1,4 +1,4 @@
-import { FETCH_USERNAME, NEW_USER, DELETE_USER } from '../actions/types';
+import { FETCH_USERNAME, NEW_USER, LOGIN_USER } from '../actions/types';
 
 const initialState = {
   items: [], // die von den Actions gesendeten Logins (Alle User?)
@@ -14,13 +14,13 @@ export default function(state = initialState, action) {
         items: action.payload
       }
     case NEW_USER:
-    console.log('reducer_new');
+    console.log('reducer_new_user');
       return {
         ...state,
         item: action.payload
       }
-    case DELETE_USER:
-    console.log('reducer_delete');
+    case LOGIN_USER:
+    console.log('reducer_login');
       return{
         ...state,
         item: action.payload

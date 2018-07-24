@@ -1,4 +1,4 @@
-import { FETCH_USERNAME, NEW_USER, DELETE_USER } from './types';
+import { FETCH_USERNAME, NEW_USER, LOGIN_USER } from './types';
 import { request } from 'graphql-request';
 import { userData } from '../data/UserData';
 
@@ -17,12 +17,19 @@ export const fetchUser = () => dispatch => {
   })
 };
 
-//funktionierende Variante User zu speichern
+//Registrieren
 export const createUser = userData => dispatch => {
-  const gcEndPoint = `https://api.graph.cool/simple/v1/cjj1c5a8a13j50107quv7cl2v`
-  const gcQuery = `mutation createAccount($gender: String!, $name: String!, $email: String!, $password: String!)
-  {  createLoginData ( gender: $gender, name: $name, email: $email, password: $password )
-    { id gender name email password }
+  console.log('action create user');
+  const gcEndPoint = `https://api.graph.cool/simple/v1/cjjv79w5h7jh20103dojn8mem`
+  const gcQuery = `mutation createAccount($gender: String, $name: String, $email: String!, $password: String!)
+  {  createUser(
+        authProvider: {
+          email: {
+            email: $email,
+            password: $password
+          }
+        }, gender: $gender, name: $name)
+    { email id }
   }`
 
   const gcVariables = {
@@ -31,18 +38,39 @@ export const createUser = userData => dispatch => {
     "email": userData.email,
     "password": userData.password
   }
+  console.log('sendet request...');
   request (gcEndPoint, gcQuery, gcVariables )
   .then(user => {
     dispatch({
       type: NEW_USER,
-      payload: user.createLoginData
+      payload: user.createUser
     })
   })
 };
 
+//Login
+export const loginUser = userData => dispatch => {
+  console.log('action login user');
+  const gcEndPoint = `https://api.graph.cool/simple/v1/cjjv79w5h7jh20103dojn8mem`
+  const gcQuery = `mutation createAccount($email: String!, $password: String!)
+  {  signinUser(
+        email: {
+          email: $email,
+          password: $password
+        })
+    {token}
+  }`
 
-
-/*mutation {
- deleteLoginData (id: "cjjuf37u30kxi0181l5s3nvlq" )
-    { id gender name email password }
-}*/
+  const gcVariables = {
+    "email": userData.email,
+    "password": userData.password
+  }
+  console.log('sendet login request...');
+  request (gcEndPoint, gcQuery, gcVariables )
+  .then(user => {
+    dispatch({
+      type: LOGIN_USER,
+      payload: user.signinUser
+    })
+  })
+};

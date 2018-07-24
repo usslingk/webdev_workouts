@@ -15,6 +15,8 @@ import Home from './components/Home';
 import Workoutform from './components/Workoutform';
 import Users from './components/Users';
 import UpdateWorkout from './components/UpdateWorkout';
+import SportsForm from './components/SportsForm';
+import SportsResults from './components/SportsResults';
 
 const Header = () => {
   return(
@@ -41,6 +43,8 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
             <Route path="/home" component={Workoutform} />
+            <Route path="/sports" component={SportsForm} />
+            <Route path="/sports" component={SportsResults} />
             <Route path="/workout/:workoutid" component={UpdateWorkout} />
           </div>
         </Router>

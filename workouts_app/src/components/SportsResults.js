@@ -9,11 +9,11 @@ import { Link } from 'react-router-dom';
 //Actions
 import { fetchWorkouts, deleteWorkout } from '../actions/workoutActions';
 
-class Workouts extends Component {
-  componentWillMount(){
-    console.log('componentWillMount fetchWorkouts');
-    this.props.fetchWorkouts();
-  }
+class SportsResults extends Component {
+  //componentWillMount(){
+    //console.log('componentWillMount fetchWorkouts');
+    //this.props.fetchWorkouts();
+  //}
 
   componentWillReceiveProps(nextProps){
     if(nextProps.newWorkout){
@@ -45,16 +45,14 @@ class Workouts extends Component {
 
     return(
       <div>
-        <h1>Home</h1>
-        <h3>Hier sind deine bisherigen Workouts</h3>
-        <Link to={`/sports`}>Zur spezifischen Workout-Auswahl</Link>
+        <h3>Hier sind deine ausgewählten Workouts</h3>
         { workoutItems }
       </div>
     )
   }
 }
 
-Workouts.propTypes = {
+SportsResults.propTypes = {
   fetchWorkouts: PropTypes.func.isRequired,
   workouts: PropTypes.array.isRequired,
   newWorkout: PropTypes.object,
@@ -69,4 +67,4 @@ const mapStateToProps = state => ({
   deletedWorkout: state.workouts.item
 })
 
-export default withRouter ( connect (mapStateToProps, { fetchWorkouts, deleteWorkout })(Workouts))
+export default withRouter ( connect (mapStateToProps, { fetchWorkouts, deleteWorkout })(SportsResults))
