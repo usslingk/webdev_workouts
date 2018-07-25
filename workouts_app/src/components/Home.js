@@ -31,24 +31,40 @@ class Workouts extends Component {
 
 
   render(){
+
     const workoutItems = this.props.workouts.map(workout => (
       <div key={workout.id}>
-        <h3>{workout.dateTime}</h3>
+        <h3 className="workouthead">{workout.dateTime}</h3>
         <p>{workout.name}: Maximaler Puls={workout.max} + Minimaler Puls={workout.min} </p>
         <p>Zeit: {workout.minutes} Minuten | Super, du hast {workout.caloriesOut} Kalorien verbrannt!</p>
         <button onClick={(e) => {
           e.preventDefault();
           this.props.deleteWorkout(workout.id);
-        }}>Workout Löschen</button><Link to={`/workout/${workout.id}`} > Workout Bearbeiten</Link>
+          window.location.reload();
+        }} className="löschenbtn">Workout Löschen</button><Link to={`/workout/${workout.id}`} className="bearbeiten"> Workout Bearbeiten</Link>
+        <br /><br /><br />
       </div>
     ));
 
     return(
       <div>
-        <h1>Home</h1>
-        <h3>Hier sind deine bisherigen Workouts</h3>
-        <Link to={`/sports`}>Zur spezifischen Workout-Auswahl</Link>
-        { workoutItems }
+      <div class="card text-center" data-tabs="myTabPage">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+    <li class="nav-item"><a class="nav-link" href="/home" data-tab-page="page1">Workouts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/workoutform" data-tab-page="page2">Add Workout</a></li>
+    <li class="nav-item"><a class="nav-link" href="/sports" data-tab-page="page3">List Workout by category</a></li>
+    </ul>
+  </div>
+  <div class="card-block" data-tab-page="page1">
+  <br />
+  <br />
+    <h4 class="card-title workoutheadline">Hier sind deine bisherigen Workouts</h4>
+    <br />
+    { workoutItems }
+    <br />
+  </div>
+</div>
       </div>
     )
   }

@@ -20,71 +20,20 @@ class SportsForm extends Component {
       this.props.sports.push(nextProps.newWorkout);
     }
   }*/
-  onSubmit(e){
-    e.preventDefault();
-    console.log('onSubmit Sports');
-
-    /*const sportArt = {
-      id: this.state.id
-    };
-
-    this.props.getSports(sportArt);*/
-    var input2 = {
-      data: {
-        name: 'test workout',
-        Sportarten: {
-          id: 'cjjwxqdfj1p4d0175f7lgtrkz',
-          workouts: [
-            {
-              name: 'test neu',
-              min: 123,
-              dateTime: '2018-07-15',
-              caloriesOut: 1250,
-              minutes: 50,
-              id: 'cjjvn1pz90mpi0147nat0nd4o',
-              max: 123
-            },
-            {
-              name: 'Test Reload',
-              min: 60,
-              dateTime: '2018-07-16',
-              caloriesOut: 500,
-              minutes: 400,
-              id: 'cjjvn33820mon0104lcwjnlb9',
-              max: 125
-            }
-          ]
-      }
-    }
-  }
-  var input = {
-    user: {
-        name: 'John',
-        nick: 'C00lHacker'
-      }
-    };
-
-  var JM = require('json-mapper');
-
-  var converter = JM.makeConverter({
-    val: JM.ch('data.Sportarten.workouts', JM.map(function(input2){ return input2.name }))
-  });
-
-  var result = converter(input2);
-
-  console.log(result);
-}
 
   render(){
+    console.log('Ergebnis Sportarten'+this.props.sports);
     const sportItems = this.props.sports.map(sportart => (
       <div key={sportart.id}>
         <button onClick = {(e) => {
           e.preventDefault();
           this.props.getSports(sportart.id);
-        }}>{sportart.name}</button>
+        }} className="sportbtn">{sportart.name}</button>
+        <br /><br />
       </div>
     ));
 
+    console.log('Ergebnis Workouts'+this.props.workouts);
     const workoutItems = this.props.workouts.map(workout => (
       <div key={workout.id}>
         <h3>{workout.dateTime}</h3>
@@ -99,12 +48,24 @@ class SportsForm extends Component {
 
     return(
       <div>
-        <h3>Sportart auswählen:</h3>
-        { sportItems }
-        <form onSubmit={this.onSubmit} className="register">
-        <button type="submit">Eintragen</button>
-        </form>
-        { workoutItems }
+      <div class="card text-center" data-tabs="myTabPage">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+    <li class="nav-item"><a class="nav-link" href="/home" data-tab-page="page1">Workouts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/workoutform" data-tab-page="page2">Add Workout</a></li>
+    <li class="nav-item"><a class="nav-link" href="/sports" data-tab-page="page3">List Workout by category</a></li>
+    </ul>
+  </div>
+  <div class="card-block" data-tab-page="page3">
+  <br />
+
+    <h4 class="card-title">Sportart auswählen:</h4>
+    { sportItems }
+    <br />
+    { workoutItems }
+  </div>
+</div>
+
       </div>
     )
   }
@@ -115,7 +76,7 @@ SportsForm.propTypes = {
   getSports: PropTypes.func.isRequired,
   sports: PropTypes.array.isRequired,
   workouts: PropTypes.array.isRequired
-};
+  };
 
 const mapStateToProps = state => ({
   sports: state.sports.items, //index.js (2.workouts)

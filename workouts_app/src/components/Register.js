@@ -43,28 +43,35 @@ class Register extends Component {
   render(){
     return(
       <div>
-        <h1>Registrieren</h1>
+      <div class="card" >
+          <div class="card-body">
+            <h1 class="card-title">Register</h1>
+            <br />
         <form onSubmit={this.onSubmit}>
           <div>
-            <label>weiblich</label>
-            <input type="radio" name="gender" onChange={this.onChange} value={"female"} />
-            <label>männlich</label>
-            <input type="radio" name="gender" onChange={this.onChange} value={"male"} />
+
+            <input type="radio" name="gender" onChange={this.onChange} value={"female"} className="radio"/>
+            <label> weiblich</label>
+            <input type="radio" name="gender" onChange={this.onChange} value={"male"} className="radio"/>
+            <label> männlich</label>
           </div>
           <div>
-            <label>Name:</label><br />
-            <input type="text" name="name" onChange={this.onChange} value={this.state.name} />
+          <br />
+            <input type="text" name="name" onChange={this.onChange} value={this.state.name} placeholder="Name"/>
           </div>
           <div>
-            <label>E-Mail-Adresse:</label><br />
-            <input type="email" name="email" onChange={this.onChange} value={this.state.email} />
+          <br />
+            <input type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="E-Mail"/>
           </div>
           <div>
-            <label>Passwort:</label><br />
-            <input type="password" name="password" onChange={this.onChange} value={this.state.password} />
+          <br />
+            <input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password"/>
           </div>
-          <button type="submit">Registrieren</button>
+          <br />
+          <button type="submit" className="loginbtn">Registrieren</button>
         </form>
+        </div>
+  </div>
       </div>
     )
   }

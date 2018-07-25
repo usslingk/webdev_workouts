@@ -52,23 +52,30 @@ class Login extends Component {
   render(){
     return(
       <div>
-        <h1>Login</h1>
+
+  <div class="card" >
+      <div class="card-body">
+        <h1 class="card-title">Login</h1>
+        <br />
           <form onSubmit={this.onSubmit} className="register">
             <div>
-              <label>E-Mail:</label> <br />
-              <input type="email" name="email" onChange={this.onChange} value={this.state.email}/>
+              <input type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="E-Mail"/>
             </div>
             <br />
             <div>
-              <label>Passwort: </label> <br />
-              <input type="password" name="password" onChange={this.onChange} value={this.state.password}/>
+              <input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password"/>
             </div>
             <br />
-            <button type="submit">Login</button>
+            <button type="submit" className="loginbtn">Login</button>
             <br />
             <br />
-            <Link to={`/register`}> Noch kein Mitglied? Jetzt registrieren! </Link>
+            <br />
+            <Link to={`/register`} className="km"> Noch kein Mitglied? Jetzt registrieren! </Link>
+            <br /><br />
           </form>
+      </div>
+</div>
+
       </div>
     )
   }

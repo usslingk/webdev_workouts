@@ -21,9 +21,9 @@ export const getSports = id => dispatch => {
   console.log('get Sportarten');
   const gcEndPoint = `https://api.graph.cool/simple/v1/cjj1c5a8a13j50107quv7cl2v`
   const gcQuery = `query getSportarten($id: ID!)
-  { Sportarten (id: "cjjwxqdfj1p4d0175f7lgtrkz")
-  { id workouts{
-    id min max name minutes dateTime caloriesOut } } }`
+  { allWorkouts (filter:{sportartens_some: {id: $id}})
+  { id min max name minutes dateTime caloriesOut sportartens {id}}
+  }`
   const gcVariables = {
     "id": id
   }
@@ -31,7 +31,7 @@ export const getSports = id => dispatch => {
   .then(workout => {
     dispatch({
       type: GET_SPORTS,
-      payload: workout.Sportarten
+      payload: workout.allWorkouts
     })
   })
 };

@@ -38,7 +38,7 @@ export default function(state = initialState, action) {
         item: action.payload
       }
     case GET_SPORTS:
-      console.log('reducer sports get');
+      console.log('reducer sports get'+action);
       return{
         ...state,
         items: action.payload

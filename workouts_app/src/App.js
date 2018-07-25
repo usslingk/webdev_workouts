@@ -22,11 +22,13 @@ const Header = () => {
   return(
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
+      <a href="/login" class="btn btn-primary btn-sm">Login</a>
+      <a href="/register" class="btn btn-secondary btn-sm">Register</a>
+        <h1 className="App-title">WeFit</h1>
+
       </header>
       <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
+
       </p>
     </div>
   )
@@ -39,12 +41,11 @@ class App extends Component {
         <Router basename={'/'}>
           <div className="App"> {/*richtig das zweimal className="App"?*/}
             <Route path="/" component={Header} />
-            <Route path="/" component={Login} />
+            <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
-            <Route path="/home" component={Workoutform} />
+            <Route path="/workoutform" component={Workoutform} />
             <Route path="/sports" component={SportsForm} />
-            <Route path="/sports" component={SportsResults} />
             <Route path="/workout/:workoutid" component={UpdateWorkout} />
           </div>
         </Router>

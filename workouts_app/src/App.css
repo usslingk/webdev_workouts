@@ -1,28 +1,465 @@
+/* Card scrollbar machen
+height:150px;
+overflow-y: scroll;**/
+
+
+body{
+
+  background-position: right top;
+   background-attachment: fixed;
+   background-size: 100%;
+   background-repeat: no-repeat;
+
+}
+
+p{
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  padding-left: 150px;
+
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+/* -----------Header----------- **/
+
+/*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+}**/
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #FEDFE4;
+  height: 60px;
   padding: 20px;
   color: white;
+
 }
 
 .App-title {
   font-size: 1.5em;
+  text-align: left;
+  margin-top:  0px;
+  margin-bottom: 0px;
+  font-family: 'Shrikhand', cursive;
+  color: #233531;
+
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.btn, .btn-primary, .btn-sm{
+  float: right;
+  background-color: #FFFFFF;
+  color: #233531;
+  border: none;
+  background-color: rgba(255, 255, 255 ,0.5);
+  font-weight: 300;
+  top: 0px;
+}
+
+.btn, .btn-secondary, .btn-sm{
+  margin-right: 20px;
+  color: #959595;
+}
+
+
+
+
+.btn:hover{
+  background-color: #ffffff;
+  color: #959595;
+}
+
+/* -----------Login----------- **/
+
+.card{
+  background-color: rgba(255, 255, 255 ,0.5);
+  width: 90%;
+  border: none;
+  font-family: 'Roboto', sans-serif, 300;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+  border-radius: 0;
+  height: 490px;
+  margin-top: 55px;
+  margin-bottom: 55px;
+
+
+}
+
+.card-body{
+  opacity: 1;
+  padding-top: 100px;
+
+}
+
+h1{
+  font-family: 'Shrikhand', cursive;
+  color: #233531;
+}
+
+input[type=email] {
+
+  border: none;
+  background-color: rgba(255, 255, 255 ,0.9);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px #b8b8b8;
+  padding-left: 15px;
+}
+
+input[type=password] {
+  border: none;
+  background-color: rgba(255, 255, 255 ,0.9);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px #b8b8b8;
+  padding-left: 15px;
+}
+
+input[type=text] {
+  border: none;
+  background-color: rgba(255, 255, 255 ,0.9);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px #b8b8b8;
+  padding-left: 15px;
+}
+
+input[type=number] {
+  border: none;
+  background-color: rgba(255, 255, 255 ,0.9);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px #b8b8b8;
+  padding-left: 15px;
+}
+
+::placeholder{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #b8b8b8;
+}
+
+.km{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+}
+
+.loginbtn{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  box-shadow: 2px 2px 2px #b8b8b8;
+}
+
+.loginbtn:hover{
+  background-color: #FEDFE4;
+  box-shadow: 2px 2px 2px #b8b8b8;
+}
+
+.km:hover{
+  text-decoration: none;
+  color: #BF848A;
+}
+
+
+/* -----------Register----------- **/
+
+label{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+  padding-right: 15px;
+
+}
+
+.radio{
+margin-right: 7px;
+}
+
+/* -----------Register----------- **/
+
+.home{
+  overflow-y: scroll;
+
+}
+/* -----------Workoutform----------- **/
+
+.card, .text-center{
+  overflow-y: scroll;
+}
+
+.card-block{
+  overflow-y: scroll;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #233531;
+}
+
+.card-header{
+  background-color:  rgba(254, 223, 228, 0.5);
+  border-bottom: none;
+}
+
+.card-title, .registerheadline{
+  text-align: center;
+}
+
+a{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+
+}
+
+.nav-tabs .nav-link{
+  border: none;
+}
+
+.nav-tabs .nav-link:hover{
+
+  color: #BF848A;
+}
+
+.workouthead{
+  text-align: left;
+  padding-left: 150px;
+  border-top: 1px solid #959595;
+  padding-top: 20px;
+}
+
+
+
+.card-title, .workoutheadline{
+  text-align: left;
+  padding-left: 100px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+
+}
+
+h1.card-title{
+
+    text-align:  center;
+    padding-left: 0px;
+
+
+}
+
+.löschenbtn{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  box-shadow: 2px 2px 2px #b8b8b8;
+
+}
+
+.löschenbtn:hover{
+  background-color: #FEDFE4;
+  box-shadow: 2px 2px 2px #b8b8b8;
+}
+
+button.löschenbtn{
+  float: left;
+  left: 100px;
+  margin-left: 150px;
+}
+
+.bearbeiten{
+  float: left;
+  padding-left: 30px;
+}
+
+.sportbtn{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  box-shadow: 2px 2px 2px #b8b8b8;
+  position: absolute;
+  left: 100px;
+}
+
+.sportbtn:hover{
+  background-color: #FEDFE4;
+  box-shadow: 2px 2px 2px #b8b8b8;
+}
+
+
+.formularfeld{
+  width: 475px;
+
+}
+
+.eintragen{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  box-shadow: 2px 2px 2px #b8b8b8;
+
+  margin-right: 680px;
+
+}
+
+label.checkbox{
+  float: left;
+  margin-left: 150px;
+
+}
+
+/* Mediaqueries */
+
+@media screen and (min-width: 362px) { /* entspricht > 480px @16px */
+  body{
+  background-image: none;
+  background-color: #BF848A;
+  }
+  .workouthead{
+    text-align: left;
+    padding-left: 50px;
+    border-top: 1px solid #959595;
+    padding-top: 20px;
+  }
+
+  .card-title, .workoutheadline{
+    text-align: left;
+    padding-left: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #959595;
+
+  }
+
+  p{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding-left: 50px;
+
+  }
+
+
+
+}
+
+@media screen and (min-width: 30em) { /* entspricht > 480px @16px */
+  body{
+  background-image: none;
+  background-color: #BF848A;
+  }
+
+  .workouthead{
+    text-align: left;
+    padding-left: 150px;
+    border-top: 1px solid #959595;
+    padding-top: 20px;
+  }
+
+
+
+  .card-title, .workoutheadline{
+    text-align: left;
+    padding-left: 150px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #959595;
+
+  }
+  p{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding-left: 150px;
+
+  }
+
+
+
+}
+
+
+
+@media screen and (min-width: 48em) { /* entspricht > 768px @16px */
+  body{
+  background-image: url("weFit.jpg");
+  background-color: #BF848A;
+  }
+  .workouthead{
+    text-align: left;
+    padding-left: 150px;
+    border-top: 1px solid #959595;
+    padding-top: 20px;
+  }
+
+
+
+  .card-title, .workoutheadline{
+    text-align: left;
+    padding-left: 150px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #959595;
+
+  }
+  p{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding-left: 150px;
+
+  }
+
+}
+
+
+@media screen and (min-width: 64em) { /* entspricht > 1024px @16px */
+  body{
+  background-image: url("weFit.jpg");
+  background-color: #BF848A;
+  }
+  .workouthead{
+    text-align: left;
+    padding-left: 150px;
+    border-top: 1px solid #959595;
+    padding-top: 20px;
+  }
+
+
+
+  .card-title, .workoutheadline{
+    text-align: left;
+    padding-left: 150px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #959595;
+
+  }
+  p{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding-left: 150px;
+
+  }
+
 }
