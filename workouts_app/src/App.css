@@ -398,6 +398,11 @@ input.checkbox{
 .bodyweight{
   padding-right: 33px;
 }
+
+.synchro{
+  float: left;
+}
+
 /* Mediaqueries */
 
 @media screen and (min-width: 362px) { /* entspricht > 480px @16px */
