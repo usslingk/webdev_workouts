@@ -10,9 +10,6 @@ const store = createStore(
   rootReducer,
   initialState,
   applyMiddleware(...middleware),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
-   serialize: true
-})
 );
 
 export default store;

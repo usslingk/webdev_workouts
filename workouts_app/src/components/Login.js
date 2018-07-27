@@ -26,8 +26,8 @@ class Login extends Component {
   componentWillReceiveProps(nextProps){
     if(nextProps.userLogin){
       console.log('antwort erhalten');
-      //window.location.assign("/home")
-    }
+    window.location.assign("/home")
+  }
   }
 
   onChange(e){
@@ -42,12 +42,14 @@ class Login extends Component {
       password: this.state.password
     };
 
+
     this.props.loginUser(user);
     console.log('loginUser ausgeführt');
+    //his.props.history.push("/home");
 
-    this.props.history.push("/home");
 
   }
+
 
   render(){
     return(
@@ -66,7 +68,7 @@ class Login extends Component {
               <input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password"/>
             </div>
             <br />
-            <button type="submit" className="loginbtn">Login</button>
+            <button type="submit" className="loginbtn"><Link to={'/home'}>Login</Link></button>
             <br />
             <br />
             <br />

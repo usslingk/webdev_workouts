@@ -2,9 +2,12 @@
   "name": "workouts_app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://omb.katharina-ussling.de/",
   "dependencies": {
+    "axios": "^0.18.0",
     "graphql-request": "^1.6.0",
     "json-mapper": "0.0.12",
+    "query-string": "^6.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",

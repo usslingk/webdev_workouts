@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import store from './store';
 //router
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 //components
 import Register from './components/Register';
 import Login from './components/Login';
@@ -22,8 +22,8 @@ const Header = () => {
   return(
     <div className="App">
       <header className="App-header">
-      <a href="/login" class="btn btn-primary btn-sm">Login</a>
-      <a href="/register" class="btn btn-secondary btn-sm">Register</a>
+      <Link to={"/"} class="btn btn-primary btn-sm">Login</Link>
+      <Link to={"/register"} class="btn btn-secondary btn-sm">Register</Link>
         <h1 className="App-title">WeFit</h1>
 
       </header>
@@ -38,10 +38,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router basename={'/'}>
+        <Router>
           <div className="App"> {/*richtig das zweimal className="App"?*/}
             <Route path="/" component={Header} />
-            <Route path="/login" component={Login} />
+            <Route path="/" exact={true} component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
             <Route path="/workoutform" component={Workoutform} />

@@ -145,8 +145,8 @@ input[type=number] {
 
 .km{
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: #959595;
+
+  color: #233531;
 }
 
 .loginbtn{
@@ -206,8 +206,9 @@ margin-right: 7px;
 }
 
 .card-header{
-  background-color:  rgba(254, 223, 228, 0.5);
-  border-bottom: none;
+  background:  none;
+  border-bottom: 0.5px solid #BF848A;
+
 }
 
 .card-title, .registerheadline{
@@ -222,13 +223,30 @@ a{
 }
 
 .nav-tabs .nav-link{
-  border: none;
+
+  border-bottom: none;
+  background-color: #FEDFE4;
 }
 
 .nav-tabs .nav-link:hover{
-
   color: #BF848A;
 }
+
+.nav-item{
+padding-left: 1px;
+padding-bottom: 0;
+}
+
+.tabbackground{
+  background-color: #BF848A !important;
+  color: #ffffff !important;
+}
+
+.nav, .nav-tabs, .card-header-tabs{
+  padding: 2px;
+}
+
+
 
 .workouthead{
   text-align: left;
@@ -280,9 +298,22 @@ button.löschenbtn{
   margin-left: 150px;
 }
 
-.bearbeiten{
-  float: left;
+.bearbeitenbtn{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #959595;
+  background-color: #ffffff;
+  border-radius: 8px;
   padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  box-shadow: 2px 2px 2px #b8b8b8;
+}
+
+
+.bearbeiten:hover{
+  text-decoration: none;
+  color: #BF848A;
 }
 
 .sportbtn{
@@ -295,7 +326,6 @@ button.löschenbtn{
   padding-right: 30px;
   border: none;
   box-shadow: 2px 2px 2px #b8b8b8;
-  position: absolute;
   left: 100px;
 }
 
@@ -326,11 +356,48 @@ button.löschenbtn{
 }
 
 label.checkbox{
-  float: left;
-  margin-left: 150px;
+padding-right:
 
 }
 
+input.checkbox{
+  margin-right: 10px;
+}
+
+.check{
+
+    text-align: left;
+}
+
+.aufwaermen{
+  padding-right: 50px;
+}
+
+.dehnen{
+  padding-right: 60px;
+}
+
+
+
+.laufen{
+  padding-right: 83px;
+}
+
+.yoga{
+  padding-right: 80px;
+}
+
+.kampf{
+  padding-right: 56px;
+}
+
+.meditation{
+  padding-right: 56px;
+}
+
+.bodyweight{
+  padding-right: 33px;
+}
 /* Mediaqueries */
 
 @media screen and (min-width: 362px) { /* entspricht > 480px @16px */

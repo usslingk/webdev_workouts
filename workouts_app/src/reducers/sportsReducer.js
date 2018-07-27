@@ -1,4 +1,4 @@
-import { GET_SPORTS, FETCH_SPORTS } from '../actions/types';
+import { GET_SPORTS, FETCH_SPORTS, FETCH_SPORTTAGS } from '../actions/types';
 
 const initialState = {
   items: [], // die von den Actions gesendeten Logins (Alle User?)
@@ -13,7 +13,13 @@ export default function(state = initialState, action) {
         ...state,
         items: action.payload
       }
+      case FETCH_SPORTTAGS:
+      return{
+        ...state,
+        items: action.payload
+      }
     default:
       return state;
   }
+
 }

@@ -98,7 +98,8 @@ class UpdateWorkout extends Component {
             <label>Verbrannte Kalorien:</label><br />
             <input type="number" name="caloriesOut" onChange={this.onChange} value={this.state.caloriesOut} />
           </div>
-          <button type="submit">Eintragen</button>
+          <br />
+          <button type="submit" className="loginbtn">Eintragen</button>
         </form>
       </div>
     )

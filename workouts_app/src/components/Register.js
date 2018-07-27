@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 //redux
 import { connect } from 'react-redux';
 //Router
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 //Component
 import { createUser } from '../actions/loginActions';
 
@@ -68,7 +68,7 @@ class Register extends Component {
             <input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password"/>
           </div>
           <br />
-          <button type="submit" className="loginbtn">Registrieren</button>
+          <button type="submit" className="loginbtn"><Link to={"/login"}>Registrieren</Link></button>
         </form>
         </div>
   </div>

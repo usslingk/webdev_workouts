@@ -1,4 +1,4 @@
-import { FETCH_USERNAME, NEW_USER, LOGIN_USER } from './types';
+import { FETCH_USERNAME, NEW_USER, LOGIN_USER, LOGIN_ERROR } from './types';
 import { request } from 'graphql-request';
 import { userData } from '../data/UserData';
 
@@ -66,11 +66,20 @@ export const loginUser = userData => dispatch => {
     "password": userData.password
   }
   console.log('sendet login request...');
+
   request (gcEndPoint, gcQuery, gcVariables )
-  .then(user => {
+  .then(
+    user => {
     dispatch({
       type: LOGIN_USER,
       payload: user.signinUser
-    })
-  })
+    });
+  },
+    error => {
+      dispatch({
+        type: LOGIN_ERROR,
+        message: window.alert('E-Mail oder Passwort falsch!'),
+      })
+
+  });
 };

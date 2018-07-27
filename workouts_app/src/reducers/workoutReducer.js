@@ -1,4 +1,4 @@
-import { FETCH_WORKOUTS, NEW_WORKOUT, DELETE_WORKOUT, UPDATE_WORKOUT, GET_WORKOUT, GET_SPORTS } from '../actions/types';
+import { FETCH_WORKOUTS, NEW_WORKOUT, DELETE_WORKOUT, UPDATE_WORKOUT, GET_WORKOUT, GET_SPORTS, SYNCH_WORKOUT } from '../actions/types';
 
 const initialState = {
   items: [], // die von den Actions gesendeten Logins (Alle User?)
@@ -39,6 +39,12 @@ export default function(state = initialState, action) {
       }
     case GET_SPORTS:
       console.log('reducer sports get'+action);
+      return{
+        ...state,
+        items: action.payload
+      }
+      case SYNCH_WORKOUT:
+      console.log('reducer synch');
       return{
         ...state,
         items: action.payload

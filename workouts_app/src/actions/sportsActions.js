@@ -1,4 +1,4 @@
-import { GET_SPORTS, FETCH_SPORTS } from './types';
+import { GET_SPORTS, FETCH_SPORTS, FETCH_SPORTTAGS } from './types';
 import { request } from 'graphql-request';
 
 
@@ -11,6 +11,23 @@ export const fetchSports = () => dispatch => {
   .then(users => {
     dispatch({
       type: FETCH_SPORTS,
+      payload: users.allSportartens
+    })
+  })
+};
+
+//Hashtags
+export const fetchSportTags = id => dispatch => {
+  console.log('fetching Sportarten');
+  const gcEndPoint = `https://api.graph.cool/simple/v1/cjj1c5a8a13j50107quv7cl2v`
+  const gcQuery = `query hashtags ($id: ID!)
+  { allSportartens (filter:{ workouts_some: {id:$id}})
+  { id name }
+  }`
+  request (gcEndPoint, gcQuery)
+  .then(users => {
+    dispatch({
+      type: FETCH_SPORTTAGS,
       payload: users.allSportartens
     })
   })

@@ -39,7 +39,7 @@ class SportsResults extends Component {
         <button onClick={(e) => {
           e.preventDefault();
           this.props.deleteWorkout(workout.id);
-        }}>Workout Löschen</button><Link to={`/workout/${workout.id}`} > Workout Bearbeiten</Link>
+        }} className="löschenbtn">Workout Löschen</button><Link to={`/workout/${workout.id}`} className="bearbeiten"> Workout Bearbeiten</Link>
       </div>
     ));
 

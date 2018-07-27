@@ -36,13 +36,17 @@ class SportsForm extends Component {
     console.log('Ergebnis Workouts'+this.props.workouts);
     const workoutItems = this.props.workouts.map(workout => (
       <div key={workout.id}>
-        <h3>{workout.dateTime}</h3>
-        <p>{workout.name}: Maximaler Puls={workout.max} + Minimaler Puls={workout.min} </p>
-        <p>Zeit: {workout.minutes} Minuten | Super, du hast {workout.caloriesOut} Kalorien verbrannt!</p>
+        <h3 className="workouthead">{workout.dateTime}</h3>
+        <p>{workout.name}</p>
+        <p>Maximaler Puls: {workout.max} </p>
+        <p> Minimaler Puls: {workout.min} </p>
+        <p>Zeit: {workout.minutes} Minuten</p>
+        <p>Super, du hast {workout.caloriesOut} Kalorien verbrannt!</p>
         <button onClick={(e) => {
           e.preventDefault();
           this.props.deleteWorkout(workout.id);
-        }}>Workout Löschen</button><Link to={`/workout/${workout.id}`} > Workout Bearbeiten</Link>
+        }} className="löschenbtn"><Link to={"/sports"}>Workout Löschen</Link></button><button className="bearbeitenbtn"><Link to={`/workout/${workout.id}`} className="bearbeiten"> Workout Bearbeiten</Link></button>
+        <br /><br /><br />
       </div>
     ));
 
@@ -51,9 +55,9 @@ class SportsForm extends Component {
       <div class="card text-center" data-tabs="myTabPage">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
-    <li class="nav-item"><a class="nav-link" href="/home" data-tab-page="page1">Workouts</a></li>
-    <li class="nav-item"><a class="nav-link" href="/workoutform" data-tab-page="page2">Add Workout</a></li>
-    <li class="nav-item"><a class="nav-link" href="/sports" data-tab-page="page3">List Workout by category</a></li>
+    <li class="nav-item"><Link class="nav-link" to={"/home"} data-tab-page="page1">Workouts</Link></li>
+    <li class="nav-item"><Link class="nav-link" to={"/workoutform"} data-tab-page="page2">Add Workout</Link></li>
+    <li class="nav-item"><Link class="nav-link tabbackground" to={"/sports"} data-tab-page="page3">List Workout by category</Link></li>
     </ul>
   </div>
   <div class="card-block" data-tab-page="page3">
