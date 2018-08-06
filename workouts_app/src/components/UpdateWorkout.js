@@ -63,6 +63,7 @@ class UpdateWorkout extends Component {
     };
     this.props.updateWorkout(workout);
     this.props.history.push("/home");
+    window.location.reload();
   }
 
   render(){

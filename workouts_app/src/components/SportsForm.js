@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 //Actions
 import { fetchSports, getSports } from '../actions/sportsActions';
+import { deleteWorkout } from '../actions/workoutActions';
 
 class SportsForm extends Component {
   componentWillMount(){
@@ -45,7 +46,8 @@ class SportsForm extends Component {
         <button onClick={(e) => {
           e.preventDefault();
           this.props.deleteWorkout(workout.id);
-        }} className="löschenbtn"><Link to={"/sports"}>Workout Löschen</Link></button><button className="bearbeitenbtn"><Link to={`/workout/${workout.id}`} className="bearbeiten"> Workout Bearbeiten</Link></button>
+          window.location.reload();
+        }} className="löschenbtn">Workout Löschen</button><button className="bearbeitenbtn"><Link to={`/workout/${workout.id}`} className="bearbeiten"> Workout Bearbeiten</Link></button>
         <br /><br /><br />
       </div>
     ));
@@ -79,12 +81,16 @@ SportsForm.propTypes = {
   fetchSports: PropTypes.func.isRequired,
   getSports: PropTypes.func.isRequired,
   sports: PropTypes.array.isRequired,
-  workouts: PropTypes.array.isRequired
+  workouts: PropTypes.array.isRequired,
+  deletedWorkout: PropTypes.object,
+  updatedWorkout: PropTypes.object,
   };
 
 const mapStateToProps = state => ({
   sports: state.sports.items, //index.js (2.workouts)
-  workouts: state.workouts.items
+  workouts: state.workouts.items,
+  updatedWorkout: state.workouts.item,
+  deletedWorkout: state.workouts.item
 })
 
-export default withRouter ( connect (mapStateToProps, { fetchSports, getSports })(SportsForm))
+export default withRouter ( connect (mapStateToProps, { fetchSports, getSports, deleteWorkout })(SportsForm))

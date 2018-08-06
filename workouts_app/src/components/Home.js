@@ -7,10 +7,19 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 //Actions
-import { fetchWorkouts, deleteWorkout } from '../actions/workoutActions';
+import { fetchWorkouts, deleteWorkout, startRequest } from '../actions/workoutActions';
 import { fetchSportTags } from '../actions/sportsActions'
 
 class Workouts extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      access_token: '',
+      user_id: '',
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   componentWillMount(){
     console.log('componentWillMount fetchWorkouts');
     this.props.fetchWorkouts();
@@ -31,13 +40,22 @@ class Workouts extends Component {
     }
   }
 
+onSubmit(e){
+  e.preventDefault();
+
+  const queryString = require('query-string');
+  const parsedHash = queryString.parse(window.location.hash);
+  console.log(parsedHash);
+
+  this.props.startRequest(parsedHash);
+}
 
   render(){
-    const sportItems = this.props.sports.map(sport =>(
+    /*const sportItems = this.props.sports.map(sport =>(
       <div key={sport.id}>
       <p> # {sport.name}</p>
       </div>
-    ))
+    ))*/
     const workoutItems = this.props.workouts.map(workout => (
       <div key={workout.id}>
 
@@ -47,7 +65,7 @@ class Workouts extends Component {
         <p>Minimaler Puls: {workout.min}</p>
         <p>Zeit: {workout.minutes} Minuten</p>
         <p>Super, du hast {workout.caloriesOut} Kalorien verbrannt!</p>
-        { sportItems }
+
         <button onClick={(e) => {
           e.preventDefault();
           this.props.deleteWorkout(workout.id);
@@ -65,9 +83,9 @@ class Workouts extends Component {
     <li class="nav-item"><Link class="nav-link tabbackground" to={"/home"} data-tab-page="page1">Workouts</Link></li>
     <li class="nav-item"><Link class="nav-link" to={"/workoutform"} data-tab-page="page2">Add Workout</Link></li>
     <li class="nav-item"><Link class="nav-link" to={"/sports"} data-tab-page="page3">List Workout by category</Link></li>
-    <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22D3SJ&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fhome&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800" className="synchro">Synchro</a>
+    <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22D3SJ&redirect_uri=http%3A%2F%2Fomb.katharina-ussling.de%2Fhome&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800">1. Schritt: Authorisieren</a>
         <form name="formHome"  onSubmit={this.onSubmit}>
-          <button type="submit" className="löschenbtn">start request</button>
+          <button type="submit" className="löschenbtn">2. Schritt: start request</button>
         </form>
     </ul>
   </div>
@@ -77,7 +95,6 @@ class Workouts extends Component {
     <h4 class="card-title workoutheadline">Hier sind deine bisherigen Workouts</h4>
     <br />
     { workoutItems }
-    { sportItems }
     <br />
   </div>
 </div>
@@ -89,6 +106,7 @@ class Workouts extends Component {
 Workouts.propTypes = {
   fetchWorkouts: PropTypes.func.isRequired,
   fetchSportTags: PropTypes.func.isRequired,
+  startRequest: PropTypes.func.isRequired,
   workouts: PropTypes.array.isRequired,
   sports: PropTypes.array.isRequired,
   newWorkout: PropTypes.object,
@@ -104,4 +122,4 @@ const mapStateToProps = state => ({
   sports: state.sports.items,
 })
 
-export default withRouter ( connect (mapStateToProps, { fetchWorkouts, deleteWorkout, fetchSportTags })(Workouts))
+export default withRouter ( connect (mapStateToProps, { fetchWorkouts, deleteWorkout, fetchSportTags, startRequest })(Workouts))

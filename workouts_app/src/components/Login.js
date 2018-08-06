@@ -68,7 +68,7 @@ class Login extends Component {
               <input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password"/>
             </div>
             <br />
-            <button type="submit" className="loginbtn"><Link to={'/home'}>Login</Link></button>
+            <button type="submit" className="loginbtn">Login</button>
             <br />
             <br />
             <br />

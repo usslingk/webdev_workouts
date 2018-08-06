@@ -127,7 +127,7 @@ class Workoutform extends Component {
             <div class="check">
               { sportItems }
                 </div>
-              <button type="submit" className="eintragen"><Link to={"/home"}>Eintragen</Link></button>
+              <button type="submit" className="eintragen">Eintragen</button>
           </div>
       </div>
     </form>
