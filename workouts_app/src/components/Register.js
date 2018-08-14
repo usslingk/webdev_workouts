@@ -38,6 +38,7 @@ class Register extends Component {
     };
 
     this.props.createUser(user);
+    this.props.history.push("/home");
   }
 
   render(){
@@ -68,7 +69,7 @@ class Register extends Component {
             <input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password"/>
           </div>
           <br />
-          <button type="submit" className="loginbtn"><Link to={"/login"}>Registrieren</Link></button>
+          <button type="submit" className="loginbtn">Registrieren</button>
         </form>
         </div>
   </div>
